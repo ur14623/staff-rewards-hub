@@ -60,8 +60,8 @@ export const CategoryChart = ({ categories }: CategoryChartProps) => {
   };
 
   return (
-    <Card className="p-6 h-full">
-      <h2 className="text-xl font-bold mb-4 text-foreground">Category Performance</h2>
+    <Card className="p-6 w-fit mx-auto">
+      <h2 className="text-xl font-bold mb-8 text-foreground">You & Your+1 Leaderboard</h2>
       <ResponsiveContainer width="100%" height={450}>
         <PieChart>
           <Pie
