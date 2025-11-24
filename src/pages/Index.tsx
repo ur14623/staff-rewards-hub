@@ -66,7 +66,7 @@ const Index = () => {
               <div className="bg-primary/10 p-2 rounded-lg">
                 <TrendingUp className="h-6 w-6 text-primary" />
               </div>
-              <h1 className="text-2xl font-bold text-foreground">Staff Rewards Leaderboard</h1>
+              <h1 className="text-2xl font-bold text-foreground">You & Your+1 Leaderboard</h1>
             </div>
             <div className="text-right">
               <p className="text-sm text-muted-foreground">Last Updated</p>
