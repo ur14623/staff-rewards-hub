@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 
 interface CategoryData {
   name: string;
@@ -12,32 +13,75 @@ interface CategoryChartProps {
 }
 
 export const CategoryChart = ({ categories }: CategoryChartProps) => {
-  return (
-    <Card className="p-6">
-      <h2 className="text-xl font-bold mb-6 text-foreground">Category Performance</h2>
-      <div className="space-y-4">
-        {categories.map((category) => (
-          <div key={category.name} className="space-y-2">
-            <div className="flex items-center justify-between text-sm">
-              <span className="font-medium text-foreground">{category.name}</span>
-              <span className="text-muted-foreground">
-                {category.percentage}% ({category.points.toLocaleString()})
-              </span>
-            </div>
-            <div className="h-8 bg-muted rounded-lg overflow-hidden">
+  const chartData = categories.map(cat => ({
+    name: cat.name,
+    value: cat.points,
+    percentage: cat.percentage,
+  }));
+
+  const COLORS = categories.map(cat => cat.color);
+
+  const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-card border border-border rounded-lg shadow-lg p-3">
+          <p className="font-semibold text-foreground">{payload[0].name}</p>
+          <p className="text-sm text-muted-foreground">
+            Points: {payload[0].value.toLocaleString()}
+          </p>
+          <p className="text-sm text-primary font-semibold">
+            {payload[0].payload.percentage}%
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  const CustomLegend = ({ payload }: any) => {
+    return (
+      <div className="flex flex-col gap-2 mt-4">
+        {payload.map((entry: any, index: number) => (
+          <div key={`legend-${index}`} className="flex items-center justify-between text-sm">
+            <div className="flex items-center gap-2">
               <div
-                className="h-full transition-all duration-500 flex items-center justify-end pr-3 text-xs font-semibold text-white"
-                style={{
-                  width: `${category.percentage}%`,
-                  backgroundColor: category.color,
-                }}
-              >
-                {category.percentage > 10 && `${category.percentage}%`}
-              </div>
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: entry.color }}
+              />
+              <span className="font-medium text-foreground">{entry.value}</span>
             </div>
+            <span className="text-muted-foreground">
+              {entry.payload.percentage}%
+            </span>
           </div>
         ))}
       </div>
+    );
+  };
+
+  return (
+    <Card className="p-6">
+      <h2 className="text-xl font-bold mb-2 text-foreground">Category Performance</h2>
+      <ResponsiveContainer width="100%" height={300}>
+        <PieChart>
+          <Pie
+            data={chartData}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={({ percentage }) => `${percentage}%`}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {chartData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index]} />
+            ))}
+          </Pie>
+          <Tooltip content={<CustomTooltip />} />
+          <Legend content={<CustomLegend />} />
+        </PieChart>
+      </ResponsiveContainer>
     </Card>
   );
 };
