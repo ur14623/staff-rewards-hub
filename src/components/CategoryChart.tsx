@@ -67,7 +67,7 @@ export const CategoryChart = ({ categories }: CategoryChartProps) => {
           <Pie
             data={chartData}
             cx="50%"
-            cy="45%"
+            cy="38%"
             labelLine={false}
             label={({ percentage }) => `${percentage}%`}
             outerRadius={120}
