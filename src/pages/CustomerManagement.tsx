@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { MainLayout } from '@/components/layout/MainLayout';
 import { CustomerCard } from '@/components/customers/CustomerCard';
 import { CustomerList } from '@/components/customers/CustomerList';
+import { CreateCustomerDialog } from '@/components/customers/CreateCustomerDialog';
 import { mockCustomers } from '@/data/mockData';
-import { Users, Star, Search, LayoutGrid, List } from 'lucide-react';
+import { Users, Star, Search, LayoutGrid, List, Plus } from 'lucide-react';
 import { MetricCard } from '@/components/dashboard/MetricCard';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-
 const segmentFilters = [
   { value: 'all', label: 'All Customers' },
   { value: 'vip', label: 'VIP' },
@@ -20,7 +21,7 @@ const CustomerManagement = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [segmentFilter, setSegmentFilter] = useState('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-
+  const [dialogOpen, setDialogOpen] = useState(false);
   const filteredCustomers = mockCustomers.filter((customer) => {
     const matchesSearch =
       customer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -36,11 +37,16 @@ const CustomerManagement = () => {
     <MainLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between flex-wrap gap-4">
           <div>
             <h1 className="text-3xl font-bold text-foreground">Customer Management</h1>
             <p className="text-muted-foreground mt-1">Customer relationship and behavior analytics</p>
           </div>
+          
+          <Button onClick={() => setDialogOpen(true)} className="gradient-primary text-primary-foreground">
+            <Plus className="h-4 w-4 mr-2" />
+            Create Customer
+          </Button>
           
           {/* View Toggle */}
           <div className="flex items-center gap-2 bg-card border border-border rounded-lg p-1">
@@ -132,6 +138,8 @@ const CustomerManagement = () => {
             <p className="text-muted-foreground">No customers found matching your search</p>
           </div>
         )}
+
+        <CreateCustomerDialog open={dialogOpen} onOpenChange={setDialogOpen} />
       </div>
     </MainLayout>
   );
