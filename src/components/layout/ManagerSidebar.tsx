@@ -6,7 +6,6 @@ import {
   Users,
   ChefHat,
   UserCircle,
-  Megaphone,
   BarChart3,
   ChevronLeft,
   ChevronRight,
@@ -18,7 +17,6 @@ const navItems = [
   { path: '/waiters', label: 'Waiter Management', icon: Users },
   { path: '/chefs', label: 'Chef Management', icon: ChefHat },
   { path: '/customers', label: 'Customer Management', icon: UserCircle },
-  { path: '/advertisements', label: 'Advertisements', icon: Megaphone },
   { path: '/reports', label: 'Reports & Analytics', icon: BarChart3 },
 ];
 
