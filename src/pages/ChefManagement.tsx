@@ -57,31 +57,39 @@ const ChefManagement = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <MetricCard
-            title="Active Chefs"
-            value={activeChefs}
-            icon={ChefHat}
-            subtitle={`of ${mockChefs.length} total`}
-            variant="kitchen"
-          />
-          <MetricCard
-            title="Orders Completed"
-            value={totalOrders}
-            icon={TrendingUp}
-            trend={{ value: 10, isPositive: true }}
-          />
-          <MetricCard
-            title="Avg Cook Time"
-            value={`${avgCookTime.toFixed(0)}m`}
-            icon={Clock}
-            variant="pending"
-          />
-          <MetricCard
-            title="Avg Accuracy"
-            value={`${avgAccuracy.toFixed(1)}%`}
-            icon={Award}
-            variant="delivered"
-          />
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="Active Chefs"
+              value={activeChefs}
+              icon={ChefHat}
+              subtitle={`of ${mockChefs.length} total`}
+              variant="kitchen"
+            />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="Orders Completed"
+              value={totalOrders}
+              icon={TrendingUp}
+              trend={{ value: 10, isPositive: true }}
+            />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="Avg Cook Time"
+              value={`${avgCookTime.toFixed(0)}m`}
+              icon={Clock}
+              variant="pending"
+            />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="Avg Accuracy"
+              value={`${avgAccuracy.toFixed(1)}%`}
+              icon={Award}
+              variant="delivered"
+            />
+          </div>
         </div>
 
         {/* Kitchen Stations Overview */}

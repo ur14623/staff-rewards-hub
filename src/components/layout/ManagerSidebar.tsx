@@ -3,8 +3,6 @@ import { cn } from '@/lib/utils';
 import { useSidebarContext } from '@/contexts/SidebarContext';
 import {
   LayoutDashboard,
-  ClipboardList,
-  ListOrdered,
   Users,
   ChefHat,
   UserCircle,
@@ -17,8 +15,6 @@ import {
 
 const navItems = [
   { path: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { path: '/orders', label: 'Order Management', icon: ClipboardList },
-  { path: '/all-orders', label: 'All Orders', icon: ListOrdered },
   { path: '/waiters', label: 'Waiter Management', icon: Users },
   { path: '/chefs', label: 'Chef Management', icon: ChefHat },
   { path: '/customers', label: 'Customer Management', icon: UserCircle },
@@ -33,7 +29,7 @@ export const ManagerSidebar = () => {
   return (
     <aside
       className={cn(
-        'min-h-screen bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out flex flex-col flex-shrink-0',
+        'h-full bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out flex flex-col flex-shrink-0',
         collapsed ? 'w-20' : 'w-64'
       )}
     >
