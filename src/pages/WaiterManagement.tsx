@@ -57,30 +57,38 @@ const WaiterManagement = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <MetricCard
-            title="Active Waiters"
-            value={activeWaiters}
-            icon={Users}
-            subtitle={`of ${mockWaiters.length} total`}
-          />
-          <MetricCard
-            title="Orders Served Today"
-            value={totalOrders}
-            icon={TrendingUp}
-            trend={{ value: 15, isPositive: true }}
-          />
-          <MetricCard
-            title="Team Avg Rating"
-            value={avgRating.toFixed(1)}
-            icon={Star}
-            variant="pending"
-          />
-          <MetricCard
-            title="Total Tips Today"
-            value={`$${totalTips.toFixed(0)}`}
-            icon={DollarSign}
-            variant="delivered"
-          />
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="Active Waiters"
+              value={activeWaiters}
+              icon={Users}
+              subtitle={`of ${mockWaiters.length} total`}
+            />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="Orders Served Today"
+              value={totalOrders}
+              icon={TrendingUp}
+              trend={{ value: 15, isPositive: true }}
+            />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="Team Avg Rating"
+              value={avgRating.toFixed(1)}
+              icon={Star}
+              variant="pending"
+            />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="Total Tips Today"
+              value={`$${totalTips.toFixed(0)}`}
+              icon={DollarSign}
+              variant="delivered"
+            />
+          </div>
         </div>
 
         {/* Waiter View */}

@@ -67,19 +67,23 @@ const CustomerManagement = () => {
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <MetricCard
-            title="Total Customers"
-            value={mockCustomers.length}
-            icon={Users}
-            subtitle="In database"
-          />
-          <MetricCard
-            title="VIP Customers"
-            value={vipCount}
-            icon={Star}
-            variant="pending"
-            subtitle={`${totalVisits} total visits`}
-          />
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="Total Customers"
+              value={mockCustomers.length}
+              icon={Users}
+              subtitle="In database"
+            />
+          </div>
+          <div className="rounded-xl border border-border bg-card p-1 shadow-sm">
+            <MetricCard
+              title="VIP Customers"
+              value={vipCount}
+              icon={Star}
+              variant="pending"
+              subtitle={`${totalVisits} total visits`}
+            />
+          </div>
         </div>
 
         {/* Filters */}
